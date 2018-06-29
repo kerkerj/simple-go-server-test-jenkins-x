@@ -1,6 +1,7 @@
 pipeline:
   build:
-    image: golang
+    image: golang:1.9-alpine
     commands:
+      - go install
       - go build
       - go test
