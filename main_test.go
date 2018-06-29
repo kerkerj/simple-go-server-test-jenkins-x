@@ -25,13 +25,6 @@ func TestNewApp(t *testing.T) {
 	}
 }
 
-func TestAlwaysFail(t *testing.T) {
-	// alway failed test
-	if true {
-		t.Fatal("Failed")
-	}
-}
-
 func TestAppRun(t *testing.T) {
 	// Arrange
 	app := NewApp()
