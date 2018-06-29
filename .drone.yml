@@ -3,7 +3,7 @@ pipeline:
     commands:
       - echo "build"
   test:
-    image: golang:1.9
+    image: golang:1.9-alpine
     pull: true
     commands:
       - echo "check code quality"
