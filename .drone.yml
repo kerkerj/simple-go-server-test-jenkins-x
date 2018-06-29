@@ -1,11 +1,22 @@
+workspace:
+  base: /go
+  path: src/github.com/kerkerj/simple-go-server-test
+
 pipeline:
   build:
     image: alpine:3.7
     commands:
       - echo "build"
   test:
-    image: golang:1.9-alpine
+    image: golang:${GO_VERSION}-alpine
     pull: true
     commands:
       - echo "check code quality"
+      - go install
       - go test -v .
+
+matrix:
+  GO_VERSION:
+    - latest
+    - "1.9"
+    - "1.10"
