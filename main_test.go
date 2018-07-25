@@ -1,4 +1,4 @@
-package main
+package gosrv
 
 import (
 	"bytes"
@@ -8,6 +8,7 @@ import (
 	"net/http/httptest"
 	"regexp"
 	"testing"
+	"time"
 )
 
 func TestNewApp(t *testing.T) {
@@ -27,20 +28,20 @@ func TestNewApp(t *testing.T) {
 func TestAppRun(t *testing.T) {
 	// Arrange
 	app := NewApp()
-	app.Server.Addr = ""
 
 	// Tranfer logger output to buf
 	var buf bytes.Buffer
 	logger.SetOutput(&buf)
 
 	// Act
-	app.Run()
+	go app.Run()
 
 	// Assert
+	time.Sleep(5 * time.Second)
 	t.Log(buf.String())
-	re := regexp.MustCompile(".* Cannot start server on 9876")
+	re := regexp.MustCompile(`.* Listening on 9876`)
 	if !re.Match(buf.Bytes()) {
-		t.Fatal("Server should not start.")
+		t.Fatal("Server should start.")
 	}
 }
 
@@ -71,7 +72,7 @@ func TestIndexRouter(t *testing.T) {
 	defer resp.Body.Close()
 
 	// Assert
-	if string(b) != "Index" {
+	if string(b) != "Index - test" {
 		t.Fatal("response body doen't match")
 	}
 }

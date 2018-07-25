@@ -1,4 +1,4 @@
-package main
+package gosrv
 
 import (
 	"database/sql"
@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/kerkerj/simple-go-server-test/models"
 )
 
 type Route interface {
@@ -56,7 +58,8 @@ func (a *App) Run() {
 
 func IndexRouter() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Index")
+		user := models.NewUser(1, "test", "bio")
+		fmt.Fprintf(w, "Index - "+user.Name)
 	}
 }
 

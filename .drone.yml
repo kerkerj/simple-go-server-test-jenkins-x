@@ -1,0 +1,49 @@
+workspace:
+  base: /go
+  path: src/github.com/kerkerj/simple-go-server-test
+
+clone:
+  git:
+    image: plugins/git
+    depath: 50
+    tags: true
+
+pipeline:
+  build:
+    image: alpine:3.7
+    commands:
+      - echo "build"
+  test:
+    image: golang:${GO_VERSION}-alpine
+    commands:
+      - echo "run tests"
+      - go install
+      - go test -v ./...
+  haha:
+    image: alpine:3.7
+    commands:
+      - ls -la
+  p1:
+    image: alpine:3.7
+    group: "testgg"
+    commands:
+      - sleep 5
+      - echo "testing..."
+  p2:
+    image: alpine:3.7
+    group: "testgg"
+    commands:
+      - sleep 3
+      - echo "testing..."
+  echo_secret:
+    image: alpine:3.7
+    group: "testgg"
+    commands:
+      - echo $SECRET
+      - echo $APPLE
+    secrets: [ secret, apple ]
+
+matrix:
+  GO_VERSION:
+    - "1.9"
+    - "1.10"
