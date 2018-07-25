@@ -38,7 +38,7 @@ pipeline:
   echo_secret:
     image: alpine:3.7
     group: "testgg"
-    secrets: [secret, apple]
+    secrets: [ secret, apple ]
     commands:
       - echo $${SECRET}
       - echo $${APPLE}
