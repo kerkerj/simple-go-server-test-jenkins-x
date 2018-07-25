@@ -35,6 +35,12 @@ pipeline:
     commands:
       - sleep 5
       - echo "testing..."
+  echo_secret:
+    image: alpine:3.7
+    secrets: [secret1, secret2]
+    commands:
+      - echo $SECRET1
+      - echo $SECRET2
 
 matrix:
   GO_VERSION:
