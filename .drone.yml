@@ -15,14 +15,13 @@ pipeline:
       - echo "build"
   test:
     image: golang:${GO_VERSION}-alpine
-    pull: true
     commands:
       - echo "run tests"
       - go install
-      - go test -v .
+      - go test -v ./...
 
 matrix:
   GO_VERSION:
-    # - latest
+    - latest
     - "1.9"
     # - "1.10"
