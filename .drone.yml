@@ -27,11 +27,13 @@ pipeline:
     image: alpine:3.7
     group: "testgg"
     commands:
+      - sleep 10
       - echo "testing..."
   p2:
     image: alpine:3.7
     group: "testgg"
     commands:
+      - sleep 5
       - echo "testing..."
 
 matrix:
