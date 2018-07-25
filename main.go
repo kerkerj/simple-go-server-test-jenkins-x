@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"tmps/simple-go-server-test/models"
+	"github.com/kerkerj/simple-go-server-test/models"
 )
 
 type Route interface {
