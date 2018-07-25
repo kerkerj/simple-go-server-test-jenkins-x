@@ -38,10 +38,10 @@ pipeline:
   echo_secret:
     image: alpine:3.7
     group: "testgg"
-    secrets: [ secret, apple ]
     commands:
-      - echo $${SECRET}
-      - echo $${APPLE}
+      - echo $SECRET
+      - echo $APPLE
+    secrets: [ secret, apple ]
 
 matrix:
   GO_VERSION:
