@@ -27,20 +27,21 @@ pipeline:
     image: alpine:3.7
     group: "testgg"
     commands:
-      - sleep 10
+      - sleep 5
       - echo "testing..."
   p2:
     image: alpine:3.7
     group: "testgg"
     commands:
-      - sleep 5
+      - sleep 3
       - echo "testing..."
   echo_secret:
     image: alpine:3.7
-    secrets: [secret1, secret2]
+    group: "testgg"
+    secrets: [secret, apple]
     commands:
       - echo $SECRET1
-      - echo $SECRET2
+      - echo $APPLE
 
 matrix:
   GO_VERSION:
