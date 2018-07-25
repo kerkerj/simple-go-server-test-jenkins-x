@@ -40,8 +40,8 @@ pipeline:
     group: "testgg"
     secrets: [secret, apple]
     commands:
-      - echo $SECRET
-      - echo $APPLE
+      - echo $$SECRET
+      - echo $$APPLE
 
 matrix:
   GO_VERSION:
