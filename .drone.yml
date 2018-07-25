@@ -23,6 +23,16 @@ pipeline:
     image: alpine:3.7
     commands:
       - ls -la
+  p1:
+    image: alpine:3.7
+    group: "testgg"
+    commands:
+      - echo "testing..."
+  p2:
+    image: alpine:3.7
+    group: "testgg"
+    commands:
+      - echo "testing..."
 
 matrix:
   GO_VERSION:
