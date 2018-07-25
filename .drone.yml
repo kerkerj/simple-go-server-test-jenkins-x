@@ -2,11 +2,11 @@ workspace:
   base: /go
   path: src/github.com/kerkerj/simple-go-server-test
 
-# clone:
-#   git:
-#     image: plugins/git
-#     depath: 50
-#     tags: true
+clone:
+  git:
+    image: plugins/git
+    depath: 50
+    tags: true
 
 pipeline:
   build:
@@ -17,7 +17,7 @@ pipeline:
     image: golang:${GO_VERSION}-alpine
     pull: true
     commands:
-      - echo "check code quality"
+      - echo "run tests"
       - go install
       - go test -v .
 
