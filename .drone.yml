@@ -2,6 +2,12 @@ workspace:
   base: /go
   path: src/github.com/kerkerj/simple-go-server-test
 
+clone:
+  git:
+    image: plugins/git
+    depath: 50
+    tags: true
+
 pipeline:
   build:
     image: alpine:3.7
@@ -9,7 +15,7 @@ pipeline:
       - echo "build"
   test:
     image: golang:${GO_VERSION}-alpine
-    pull: true
+    # pull: true
     commands:
       - echo "check code quality"
       - go install

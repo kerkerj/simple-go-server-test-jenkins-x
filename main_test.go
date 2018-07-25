@@ -1,4 +1,4 @@
-package main
+package gosrv
 
 import (
 	"bytes"
@@ -22,13 +22,6 @@ func TestNewApp(t *testing.T) {
 
 	if app.Router == nil {
 		t.Fatal("routes should not be nil")
-	}
-}
-
-func TestAlwaysFail(t *testing.T) {
-	// alway failed test
-	if true {
-		t.Fatal("Failed")
 	}
 }
 
@@ -79,7 +72,7 @@ func TestIndexRouter(t *testing.T) {
 	defer resp.Body.Close()
 
 	// Assert
-	if string(b) != "Index" {
+	if string(b) != "Index - test" {
 		t.Fatal("response body doen't match")
 	}
 }
