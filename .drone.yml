@@ -19,6 +19,10 @@ pipeline:
       - echo "run tests"
       - go install
       - go test -v ./...
+  haha:
+    image: alpine:3.7
+    commands:
+      - ls -la
 
 matrix:
   GO_VERSION:
