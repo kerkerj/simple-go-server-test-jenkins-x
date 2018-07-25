@@ -40,7 +40,7 @@ pipeline:
     group: "testgg"
     secrets: [secret, apple]
     commands:
-      - echo $SECRET1
+      - echo $SECRET
       - echo $APPLE
 
 matrix:
